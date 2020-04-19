@@ -1,0 +1,16 @@
+item {
+    id: 1
+    name: 'Arduino'
+}
+item {
+    id: 2
+    name: 'ESP8266'
+}
+item {
+    id: 3
+    name: 'Heltec'
+}
+item {
+    id: 4
+    name: 'Raspberry'
+}
