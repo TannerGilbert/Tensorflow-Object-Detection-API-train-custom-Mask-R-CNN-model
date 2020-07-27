@@ -51,9 +51,9 @@ from object_detection.utils import label_map_util
 
 
 flags = tf.app.flags
-tf.flags.DEFINE_boolean('include_masks', False,
+tf.flags.DEFINE_boolean('include_masks', True,
                         'Whether to include instance segmentations masks '
-                        '(PNG encoded) in the result. default: False.')
+                        '(PNG encoded) in the result. default: True.')
 tf.flags.DEFINE_string('train_image_dir', '',
                        'Training image directory.')
 tf.flags.DEFINE_string('test_image_dir', '',
