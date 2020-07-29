@@ -1,6 +1,6 @@
 # Train a Mask R-CNN model with the Tensorflow Object Detection API
 
-[![TensorFlow 1.15](https://img.shields.io/badge/TensorFlow-1.15-FF6F00?logo=tensorflow)](https://github.com/tensorflow/tensorflow/releases/tag/v1.15.0)
+[![TensorFlow 2.2](https://img.shields.io/badge/TensorFlow-2.2-FF6F00?logo=tensorflow)](https://github.com/tensorflow/tensorflow/releases/tag/v2.2.0)
 
 ![Mask R-CNN prediction](doc/prediction_3.png)
 
@@ -17,8 +17,8 @@ git clone https://github.com/tensorflow/models.git
 ### Docker Installation
 
 ```bash
-# From the root of the git repository
-docker build -f research/object_detection/dockerfiles/tf1/Dockerfile -t od .
+# From the root of the git repository (inside the models directory)
+docker build -f research/object_detection/dockerfiles/tf2/Dockerfile -t od .
 docker run -it od
 ```
 
@@ -29,7 +29,7 @@ cd models/research
 # Compile protos.
 protoc object_detection/protos/*.proto --python_out=.
 # Install TensorFlow Object Detection API.
-cp object_detection/packages/tf1/setup.py .
+cp object_detection/packages/tf2/setup.py .
 python -m pip install .
 ```
 
@@ -54,57 +54,32 @@ To test the installation run:
 
 ```bash
 # Test the installation.
-python object_detection/builders/model_builder_tf1_test.py
+python object_detection/builders/model_builder_tf2_test.py
 ```
 
 If everything installed correctly you should see something like:
 
 ```bash
-Running tests under Python 3.6.9: /usr/bin/python3
-[ RUN      ] ModelBuilderTF1Test.test_create_context_rcnn_from_config_with_params(True)
-[       OK ] ModelBuilderTF1Test.test_create_context_rcnn_from_config_with_params(True)
-[ RUN      ] ModelBuilderTF1Test.test_create_context_rcnn_from_config_with_params(False)
-[       OK ] ModelBuilderTF1Test.test_create_context_rcnn_from_config_with_params(False)
-[ RUN      ] ModelBuilderTF1Test.test_create_experimental_model
-[       OK ] ModelBuilderTF1Test.test_create_experimental_model
-[ RUN      ] ModelBuilderTF1Test.test_create_faster_rcnn_from_config_with_crop_feature(True)
-[       OK ] ModelBuilderTF1Test.test_create_faster_rcnn_from_config_with_crop_feature(True)
-[ RUN      ] ModelBuilderTF1Test.test_create_faster_rcnn_from_config_with_crop_feature(False)
-[       OK ] ModelBuilderTF1Test.test_create_faster_rcnn_from_config_with_crop_feature(False)
-[ RUN      ] ModelBuilderTF1Test.test_create_faster_rcnn_model_from_config_with_example_miner
-[       OK ] ModelBuilderTF1Test.test_create_faster_rcnn_model_from_config_with_example_miner
-[ RUN      ] ModelBuilderTF1Test.test_create_faster_rcnn_models_from_config_faster_rcnn_with_matmul
-[       OK ] ModelBuilderTF1Test.test_create_faster_rcnn_models_from_config_faster_rcnn_with_matmul
-[ RUN      ] ModelBuilderTF1Test.test_create_faster_rcnn_models_from_config_faster_rcnn_without_matmul
-[       OK ] ModelBuilderTF1Test.test_create_faster_rcnn_models_from_config_faster_rcnn_without_matmul
-[ RUN      ] ModelBuilderTF1Test.test_create_faster_rcnn_models_from_config_mask_rcnn_with_matmul
-[       OK ] ModelBuilderTF1Test.test_create_faster_rcnn_models_from_config_mask_rcnn_with_matmul
-[ RUN      ] ModelBuilderTF1Test.test_create_faster_rcnn_models_from_config_mask_rcnn_without_matmul
-[       OK ] ModelBuilderTF1Test.test_create_faster_rcnn_models_from_config_mask_rcnn_without_matmul
-[ RUN      ] ModelBuilderTF1Test.test_create_rfcn_model_from_config
-[       OK ] ModelBuilderTF1Test.test_create_rfcn_model_from_config
-[ RUN      ] ModelBuilderTF1Test.test_create_ssd_fpn_model_from_config
-[       OK ] ModelBuilderTF1Test.test_create_ssd_fpn_model_from_config
-[ RUN      ] ModelBuilderTF1Test.test_create_ssd_models_from_config
-[       OK ] ModelBuilderTF1Test.test_create_ssd_models_from_config
-[ RUN      ] ModelBuilderTF1Test.test_invalid_faster_rcnn_batchnorm_update
-[       OK ] ModelBuilderTF1Test.test_invalid_faster_rcnn_batchnorm_update
-[ RUN      ] ModelBuilderTF1Test.test_invalid_first_stage_nms_iou_threshold
-[       OK ] ModelBuilderTF1Test.test_invalid_first_stage_nms_iou_threshold
-[ RUN      ] ModelBuilderTF1Test.test_invalid_model_config_proto
-[       OK ] ModelBuilderTF1Test.test_invalid_model_config_proto
-[ RUN      ] ModelBuilderTF1Test.test_invalid_second_stage_batch_size
-[       OK ] ModelBuilderTF1Test.test_invalid_second_stage_batch_size
-[ RUN      ] ModelBuilderTF1Test.test_session
-[  SKIPPED ] ModelBuilderTF1Test.test_session
-[ RUN      ] ModelBuilderTF1Test.test_unknown_faster_rcnn_feature_extractor
-[       OK ] ModelBuilderTF1Test.test_unknown_faster_rcnn_feature_extractor
-[ RUN      ] ModelBuilderTF1Test.test_unknown_meta_architecture
-[       OK ] ModelBuilderTF1Test.test_unknown_meta_architecture
-[ RUN      ] ModelBuilderTF1Test.test_unknown_ssd_feature_extractor
-[       OK ] ModelBuilderTF1Test.test_unknown_ssd_feature_extractor
+...
+[       OK ] ModelBuilderTF2Test.test_create_ssd_models_from_config
+[ RUN      ] ModelBuilderTF2Test.test_invalid_faster_rcnn_batchnorm_update
+[       OK ] ModelBuilderTF2Test.test_invalid_faster_rcnn_batchnorm_update
+[ RUN      ] ModelBuilderTF2Test.test_invalid_first_stage_nms_iou_threshold
+[       OK ] ModelBuilderTF2Test.test_invalid_first_stage_nms_iou_threshold
+[ RUN      ] ModelBuilderTF2Test.test_invalid_model_config_proto
+[       OK ] ModelBuilderTF2Test.test_invalid_model_config_proto
+[ RUN      ] ModelBuilderTF2Test.test_invalid_second_stage_batch_size
+[       OK ] ModelBuilderTF2Test.test_invalid_second_stage_batch_size
+[ RUN      ] ModelBuilderTF2Test.test_session
+[  SKIPPED ] ModelBuilderTF2Test.test_session
+[ RUN      ] ModelBuilderTF2Test.test_unknown_faster_rcnn_feature_extractor
+[       OK ] ModelBuilderTF2Test.test_unknown_faster_rcnn_feature_extractor
+[ RUN      ] ModelBuilderTF2Test.test_unknown_meta_architecture
+[       OK ] ModelBuilderTF2Test.test_unknown_meta_architecture
+[ RUN      ] ModelBuilderTF2Test.test_unknown_ssd_feature_extractor
+[       OK ] ModelBuilderTF2Test.test_unknown_ssd_feature_extractor
 ----------------------------------------------------------------------
-Ran 21 tests in 0.163s
+Ran 20 tests in 91.767s
 
 OK (skipped=1)
 ```
@@ -113,11 +88,9 @@ OK (skipped=1)
 
 Now that the Tensorflow Object Detection API is ready to go, we need to gather the images needed for training. 
 
-To train a robust model, we need lots of pictures that should vary as much as possible from each other. That means that they should have different lighting conditions, different backgrounds, and lots of random objects in them.
+To train a robust model, the pictures should be as diverse as possible. So they should have different backgrounds, varying lighting conditions, and unrelated random objects in them.
 
-You can either take the pictures yourself, or you can download pictures from the internet. For my microcontroller detector, I have four different objects I want to detect (Arduino Nano, ESP8266, Raspberry Pi 3, Heltect ESP32 Lora).
-
-I took about 25 pictures of each individual microcontroller and 25 pictures containing multiple microcontrollers using my smartphone. After taking the pictures, make sure to transform them to a resolution suitable for training (I used 800x600).
+You can either take pictures yourself, or you can download pictures from the internet. For my microcontroller detector, I took about 25 pictures of each individual microcontroller and 25 pictures containing multiple microcontrollers.
 
 ![](doc/image_gallery.png)
 
@@ -149,7 +122,7 @@ python labelme2coco.py test test.json
 Now we can create the TFRecord files using the [create_coco_tf_record.py script](create_coco_tf_record.py).
 
 ```bash
-python create_coco_tf_record.py --logtostderr --train_image_dir=images/train --test_image_dir=images/test --train_annotations_file=images/train.json --test_annotations_file=images/test.json --include_masks=True --output_dir=./
+python create_coco_tf_record.py --logtostderr --train_image_dir=images/train --test_image_dir=images/test --train_annotations_file=images/train.json --test_annotations_file=images/test.json --output_dir=./
 ```
 
 After executing this command, you should have a train.record and test.record file inside your object detection folder.
@@ -210,68 +183,77 @@ The id number of each item should match the ids inside the train.json and test.j
 
 ### 5.2 Creating the training configuration
 
-Lastly, we need to create a training configuration file. The Tensorflow Object Detection API provides 4 model options:
+Lastly, we need to create a training configuration file. At the moment only one Mask-RCNN model is supported with Tensorflow 2.
 
-From the [Tensorflow Model Zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md):
-| Model name  | Speed (ms) | COCO mAP[^1] | Outputs |
+From the [Tensorflow Model Zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md):
+| Model name  | Speed (ms) | COCO mAP | Outputs |
 | ------------ | :--------------: | :--------------: | :-------------: |
-| [mask_rcnn_inception_resnet_v2_atrous_coco](http://download.tensorflow.org/models/object_detection/mask_rcnn_inception_resnet_v2_atrous_coco_2018_01_28.tar.gz) | 771 | 36 | Masks |
-| [mask_rcnn_inception_v2_coco](http://download.tensorflow.org/models/object_detection/mask_rcnn_inception_v2_coco_2018_01_28.tar.gz) | 79 | 25 | Masks |
-| [mask_rcnn_resnet101_atrous_coco](http://download.tensorflow.org/models/object_detection/mask_rcnn_resnet101_atrous_coco_2018_01_28.tar.gz) | 470 | 33 | Masks |
-| [mask_rcnn_resnet50_atrous_coco](http://download.tensorflow.org/models/object_detection/mask_rcnn_resnet50_atrous_coco_2018_01_28.tar.gz) | 343 | 29 | Masks |
+| [Mask R-CNN Inception ResNet V2 1024x1024](http://download.tensorflow.org/models/object_detection/tf2/20200711/mask_rcnn_inception_resnet_v2_1024x1024_coco17_gpu-8.tar.gz) | 301 | 39.0/34.6 | Boxes/Masks |
 
-For this tutorial I chose to use the mask_rcnn_inception_v2_coco, because it's alot faster than the other options. You can find the [mask_rcnn_inception_v2_coco.config file](https://github.com/tensorflow/models/blob/master/research/object_detection/samples/configs/mask_rcnn_inception_v2_coco.config) inside the samples/config folder. Copy the config file to the training directory. Then open it with a text editor and make the following changes:
+The [base config](https://github.com/tensorflow/models/blob/master/research/object_detection/configs/tf2/mask_rcnn_inception_resnet_v2_1024x1024_coco17_gpu-8.config) for the model can be found inside the [configs/tf2 folder](https://github.com/tensorflow/models/tree/master/research/object_detection/configs/tf2).
 
-* Line 10: change the number of classes to number of objects you want to detect (4 in my case)
+Copy the config file to the training directory. Then open it inside a text editor and make the following changes:
 
-* Line 126: change fine_tune_checkpoint to the path of the model.ckpt file:
+* Line 12: change the number of classes to number of objects you want to detect (4 in my case)
 
-    * ```fine_tune_checkpoint: "<path>/models/research/object_detection/training/mask_rcnn_inception_v2_coco_2018_01_28/model.ckpt"```
+* Line 125: change fine_tune_checkpoint to the path of the model.ckpt file:
 
-* Line 142: change input_path to the path of the train.records file:
+    * ```fine_tune_checkpoint: "<path>/mask_rcnn_inception_resnet_v2_1024x1024_coco17_gpu-8/checkpoint/ckpt-0"```
 
-    * ```input_path: "<path>/models/research/object_detection/train.record"```
+* Line 126: Change fine_tune_checkpoint_type to detection
 
-* Line 158: change input_path to the path of the test.records file:
+* Line 136: change input_path to the path of the train.record file:
 
-    * ```input_path: "<path>/models/research/object_detection/test.record"```
+    * ```input_path: "<path>/train.record"```
 
-* Line 144 and 160: change label_map_path to the path of the label map:
+* Line 156: change input_path to the path of the test.record file:
 
-    * ```label_map_path: "<path>/models/research/object_detection/training/labelmap.pbtxt"```
+    * ```input_path: "<path>/test.record"```
 
-* Line 150: change num_example to the number of images in your test folder.
+* Line 134 and 152: change label_map_path to the path of the label map:
+
+    * ```label_map_path: "<path>/labelmap.pbtxt"```
+
+* Line 107 and 147: change batch_size to a number appropriate for your hardware, like 4, 8, or 16.
 
 ## 6. Training the model
 
 To train the model execute the following command in the command line:
 
 ```bash
-python model_main.py --logtostderr --model_dir=training/ --pipeline_config_path=training/mask_rcnn_inception_v2_coco.config
+python model_main_tf2.py --pipeline_config_path=training/mask_rcnn_inception_resnet_v2_1024x1024_coco17_gpu-8.config --model_dir=training --alsologtostderr
 ```
+
+If everything was setup correctly, the training should begin shortly, and you should see something like the following:
+
+![training the model](doc/training_model.png)
 
 Every few minutes, the current loss gets logged to Tensorboard. Open Tensorboard by opening a second command line, navigating to the object_detection folder and typing:
 
-```bash
-tensorboard --logdir=training
-```
+```tensorboard --logdir=training/train```
 
-The training script saves checkpoints every few minutes. Train the model until it reaches a satisfying loss, then you can terminate the training process by pressing Ctrl+C.
+This will open a webpage at localhost:6006.
 
-### Training in Google Colab
+![monitor training](doc/monitor_training.png)
 
-If your computer doesn't have a good enough GPU to train the model locally, you can train it on Google Colab. For this, I recommend creating a folder that has the data as well as all the config files in it and putting it on Google Drive. That way, you can then load in all the custom files into Google Colab.
-
-You can find an example inside the [Tensorflow_Object_Detection_API_Instance_Segmentation_in_Google_Colab.ipynb notebook](Tensorflow_Object_Detection_API_Instance_Segmentation_in_Google_Colab.ipynb).
+The training script saves checkpoints about every five minutes. Train the model until it reaches a satisfying loss, then you can terminate the training process by pressing Ctrl+C.
 
 ## 7. Exporting the inference graph
 
-Now that we have a trained model, we need to generate an inference graph, which can be used to run the model. For doing so we need to first of find out the highest saved step number. For this, we need to navigate to the training directory and look for the model.ckpt file with the biggest index.
+Now that we have a trained model, we need to generate an inference graph that can be used to run the model.
 
-Then we can create the inference graph by typing the following command in the command line.
+> Note: There is currently an [issue](https://github.com/tensorflow/models/issues/8841) that occurs when you're trying to export the model. As a temporary fix, Github user [Jacobsolawetz](https://github.com/Jacobsolawetz) discovered that you can add ```if not isinstance(x, str):``` add line 140 of the ```https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/keras/utils/tf_utils.py``` script. For more information, check out [his comment on the issue](https://github.com/tensorflow/models/issues/8841#issuecomment-657647648).
 
 ```bash
-python export_inference_graph.py --input_type image_tensor --pipeline_config_path training/mask_rcnn_inception_v2_coco.config --trained_checkpoint_prefix training/model.ckpt-XXXX --output_directory inference_graph
+python /content/models/research/object_detection/exporter_main_v2.py \
+    --trained_checkpoint_dir training \
+    --output_directory inference_graph \
+    --pipeline_config_path training/mask_rcnn_inception_resnet_v2_1024x1024_coco17_gpu-8.config
 ```
 
-XXXX represents the highest number.
+## Author
+ **Gilbert Tanner**
+ 
+## Support me
+
+<a href="https://www.buymeacoffee.com/gilberttanner" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
