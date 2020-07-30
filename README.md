@@ -149,7 +149,7 @@ python labelme2coco.py test test.json
 Now we can create the TFRecord files using the [create_coco_tf_record.py script](create_coco_tf_record.py).
 
 ```bash
-python create_coco_tf_record.py --logtostderr --train_image_dir=images/train --test_image_dir=images/test --train_annotations_file=images/train.json --test_annotations_file=images/test.json --include_masks=True --output_dir=./
+python create_coco_tf_record.py --logtostderr --train_image_dir=images/train --test_image_dir=images/test --train_annotations_file=images/train.json --test_annotations_file=images/test.json --output_dir=./
 ```
 
 After executing this command, you should have a train.record and test.record file inside your object detection folder.
