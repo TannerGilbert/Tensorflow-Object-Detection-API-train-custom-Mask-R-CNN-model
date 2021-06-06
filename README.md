@@ -1,6 +1,6 @@
 # Train a Mask R-CNN model with the Tensorflow Object Detection API
 
-[![TensorFlow 2.2](https://img.shields.io/badge/TensorFlow-2.2-FF6F00?logo=tensorflow)](https://github.com/tensorflow/tensorflow/releases/tag/v2.2.0)
+[![TensorFlow 2.5](https://img.shields.io/badge/TensorFlow-2.5-FF6F00?logo=tensorflow)](https://github.com/tensorflow/tensorflow/releases/tag/v2.5.0)
 
 ![Mask R-CNN prediction](doc/prediction_3.png)
 
